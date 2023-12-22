@@ -8,7 +8,7 @@
                 <!-- <el-button class="button" text>Operation button</el-button> -->
             </div>
         </template>
-        <el-steps :active="0" align-center>
+        <el-steps :active="2" align-center>
             <el-step v-for="stage in stage_data" :key="stage.name" :title="stage.name" :description="stage.description" />
         </el-steps>
         <!-- <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div> -->
@@ -18,7 +18,7 @@
         <el-table ref="singleTableRef" :data="tableData" highlight-current-row style="width: 100%"
             @current-change="handleCurrentChange">
             <el-table-column type="index" width="50" />
-            <el-table-column property="number" label="訂單編號" width="120" />
+            <el-table-column property="order_number" label="訂單編號" width="120" />
             <el-table-column property="material_name" label="原物料名稱" width="120" />
             <el-table-column property="amount" label="訂單總額" />
             <el-table-column property="order_date" label="訂購日期" />
@@ -79,39 +79,33 @@ const handleCurrentChange = (val) => {
 
 const tableData = [
   {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    order_number: '10384',
+    material_name: '銅',
+    amount: '100',
+    order_date: '2023-12-22',
+    lead_time: '2024-1-3',
+    progress: '未完成'
+  },{
+    order_number: '10384',
+    material_name: '銅',
+    amount: '100',
+    order_date: '2023-12-22',
+    lead_time: '2024-1-3',
+    progress: '未完成'
+  },{
+    order_number: '10384',
+    material_name: '銅',
+    amount: '100',
+    order_date: '2023-12-22',
+    lead_time: '2024-1-3',
+    progress: '未完成'
+  },{
+    order_number: '10384',
+    material_name: '銅',
+    amount: '100',
+    order_date: '2023-12-22',
+    lead_time: '2024-1-3',
+    progress: '未完成'
   }
 ];
 
