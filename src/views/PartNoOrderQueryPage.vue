@@ -20,6 +20,7 @@
                         </template>
                         <template  v-if="step.percentage === 100">
                             <el-button type="success" :icon="Check" circle />
+                            <span class="percentage-label">{{ step.process }}</span>
                         </template>
                     </el-progress>
                 </template>
@@ -31,16 +32,11 @@
                 @current-change="handleCurrentChange">
                 <el-table-column type="index" width="50" />
                 <el-table-column property="order_number" label="訂單編號" width="120" />
-                <el-table-column property="material_name" label="原物料名稱" width="120" />
-                <el-table-column property="amount" label="訂單總額" />
+                <el-table-column property="part_no" label="料號" width="120" />
+                <el-table-column property="machine_type" label="機台" />
                 <el-table-column property="order_date" label="訂購日期" />
                 <el-table-column property="lead_time" label="交貨日期" />
-                <el-table-column property="progress" label="訂單進度" />
             </el-table>
-            <!-- <div style="padding: 0.5% 2%;">
-                <el-button @click="setCurrent(tableData[1])">Select second row</el-button>
-                <el-button @click="setCurrent()">Clear selection</el-button>
-            </div> -->
         </div>
     </el-main>
 </template>
@@ -75,45 +71,27 @@ const step_data = ref([
 const currentRow = ref();
 const singleTableRef = ref();
 
-const setCurrent = (row) => {
-    singleTableRef.value.setCurrentRow(row);
-};
-
-const handleCurrentChange = (val) => {
-    currentRow.value = val;
-};
-
 const tableData = [
     {
         order_number: '10384',
-        material_name: '銅',
-        amount: '100',
+        part_no: '291029',
+        machine_type: 'D-005',
         order_date: '2023-12-22',
-        lead_time: '2024-1-3',
-        progress: '未完成'
-    }, {
-        order_number: '10384',
-        material_name: '銅',
-        amount: '100',
-        order_date: '2023-12-22',
-        lead_time: '2024-1-3',
-        progress: '未完成'
-    }, {
-        order_number: '10384',
-        material_name: '銅',
-        amount: '100',
-        order_date: '2023-12-22',
-        lead_time: '2024-1-3',
-        progress: '未完成'
-    }, {
-        order_number: '10384',
-        material_name: '銅',
-        amount: '100',
-        order_date: '2023-12-22',
-        lead_time: '2024-1-3',
-        progress: '未完成'
+        lead_time: '2024-1-3'
     }
 ];
+
+const modifyProgress = () => {
+    // 改 step_data 數據
+    // eg.
+    step_data.value[1].percentage = 100
+}
+
+const handleCurrentChange = (val) => {
+    currentRow.value = val
+
+    modifyProgress()
+};
 
 
 </script>
