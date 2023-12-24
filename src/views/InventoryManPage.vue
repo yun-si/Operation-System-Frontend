@@ -3,12 +3,13 @@
     <el-card class="box-card is-plain">
       <template #header>
         <div class="card-header">
-          <span>訂單編號: {{ order_data.id }}</span>
-          <span>交貨日期: {{ order_data.lead_time }}</span>
-          <!-- <el-button class="button" text>Operation button</el-button> -->
+          <span>料號: {{ order_data.id }} | 數量: {{ order_data.lead_time }}</span>
         </div>
       </template>
       <!-- 統計圖表 -->
+      <div>
+        <pieChart />
+      </div>
     </el-card>
     <!--下方的表格-->
     <div class="table_part">
@@ -16,7 +17,7 @@
         @current-change="handleCurrentChange">
         <el-table-column type="index" width="50" />
         <el-table-column property="part_no" label="料號" />
-        <el-table-column property="invetory" label="庫存數量" />
+        <el-table-column property="inventory" label="庫存數量" />
         <el-table-column property="requirement" label="所需材料" />
       </el-table>
     </div>
@@ -26,35 +27,14 @@
   <script setup>
   import { ref } from "vue"
   import { ElTable, ElCard } from 'element-plus'
+  import pieChart from '@/components/test_piechart.vue'
   
   const order_data = ref({
     id: "103301",
     lead_time: "2023-12-02"
   })
   
-  const stage_data = ref([
-    {
-      name: "Step 1",
-      description: "Some description",
-      active: "True"
-    },
-    {
-      name: "Step 2",
-      description: "Some description",
-      active: "True"
-    },
-    {
-      name: "Step 3",
-      description: "Some description",
-      active: "True"
-    },
-    {
-      name: "Step 4",
-      description: "Some description",
-      active: "True"
-    }
-  ])
-  
+ 
   const lastActiveStageIndex = ref(-1)
   
   // 表格
@@ -95,7 +75,7 @@
     left: 18%;
     right: 0;
     width: calc(100% - 18%);
-    height: 45%;
+    height: 55%;
     min-height: 250px;
     /* 覆蓋 */
     border-radius: 0;
@@ -106,15 +86,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: left;
-    padding: 3px 5px;
+    padding: 0px 4px;
   }
   
   .text {
     font-size: 14px;
-  }
-  
-  .item {
-    margin-bottom: 18px;
   }
   
   .table_part {
@@ -126,7 +102,7 @@
     left: 18%;
     right: 0;
     width: calc(100% - 18%);
-    height: calc(100% - 7% - 45%);
+    height: calc(100% - 7% - 55%);
     /* min-height: 250px */
   }
   </style>

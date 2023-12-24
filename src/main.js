@@ -7,6 +7,9 @@ import * as ElementPlusIconVue from "@element-plus/icons-vue"
 import App from './App.vue'
 import router from './router';
 
+// 引入 echart
+
+
 const app = createApp(App)
 for (const[key, component] of Object.entries(ElementPlusIconVue)) {
     app.component(key, component)
